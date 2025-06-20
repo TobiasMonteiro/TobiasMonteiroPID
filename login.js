@@ -24,26 +24,24 @@ form.addEventListener("submit", async() => {
   //   redirectTo: '/plans.html'
   // },
   });
-  console.log(data)
   if (error != null) {
     console.log(error)
   } else {
-    window.location.href = '/plans.html'
+    window.location.href = '/plans_start.html'
   }
   
 })
 
 
 
-googleLoginButton.addEventListener("click", async() => {
-  const{ user, session, error } = await supabase.auth.signInWithOAuth({
-  provider: 'google',
-  options: {
-    redirectTo: 'http://localhost:5173/plans_start.html'
-  },
-  });
-  // window.location.href='plans_start.html'
-})
+// googleLoginButton.addEventListener("click", async() => {
+//   const{ data, error } = await supabase.auth.signInWithOAuth({
+//   provider: 'google',
+//   options: {
+//     redirectTo: 'http://localhost:5173/plans_start.html'
+//   },
+//   });
+// })
 
 document.getElementById('showPassword').addEventListener("click", function() {
   let x = document.getElementById("inputPassword");

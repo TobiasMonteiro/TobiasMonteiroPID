@@ -22,30 +22,22 @@ document.querySelector("img").addEventListener("click", async() => {
     localStorage.clear()
 })
 
-const addButtonIconUrl = "https://qhbewyvljpmvwaahjzkm.supabase.co/storage/v1/object/sign/icons/add.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lNzZmMDI3Yi0xNGJjLTRlM2QtODMyOC0xNDUyOTA4ODg2NjMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpY29ucy9hZGQuc3ZnIiwiaWF0IjoxNzUwNDQ4ODM1LCJleHAiOjE3ODE5ODQ4MzV9.rQ_4-MPKLXxBaV1Wr8RUflm-H15xgqNU_2kxa0Y5nn8";
-document.querySelector("#addButton").innerHTML=`<a href="/tips_add.html"><img src="${addButtonIconUrl}"></a>`
+const backButtonIconUrl = "https://qhbewyvljpmvwaahjzkm.supabase.co/storage/v1/object/sign/icons/back.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lNzZmMDI3Yi0xNGJjLTRlM2QtODMyOC0xNDUyOTA4ODg2NjMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpY29ucy9iYWNrLnN2ZyIsImlhdCI6MTc1MDQ0ODcwOSwiZXhwIjoxNzgxOTg0NzA5fQ.ZIATQak688iCy7QCN8MpDRAPipvkuHL01OmIYrr4A2Q";
+document.querySelector("#backButton").innerHTML=`<a href="/tips.html"><img src="${backButtonIconUrl}"></a>`
 
+let id_user;
 let id_vicio;
-window.addEventListener("load", async() => {
+document.querySelector('#submitTip').addEventListener("click", async() => {
+    id_user = localStorage.getItem('id_user');
     id_vicio = localStorage.getItem('id_vicio');
-    const {data} = await supabase.from('dicas').select().eq("id_vicio", id_vicio)
-    data.forEach(element => {
-        console.log(element.dica)
-        document.querySelector('.container-plans').innerHTML+=`<div class='tip'><p class='tipP'>${element.dica}</p></div>`
-    });
+    let dica = document.getElementById('tipAddInput').value;
+    await supabase.from('dicas').insert({id_user: id_user, dica: dica, id_vicio: id_vicio})
+    window.location.href = '/tips.html'
 })
-
-
-
-
-
-
-
-
 
 const dicaIconUrl="https://qhbewyvljpmvwaahjzkm.supabase.co/storage/v1/object/sign/icons/dicas_sel.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lNzZmMDI3Yi0xNGJjLTRlM2QtODMyOC0xNDUyOTA4ODg2NjMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpY29ucy9kaWNhc19zZWwuc3ZnIiwiaWF0IjoxNzUwNDQ3NzM4LCJleHAiOjE3ODE5ODM3Mzh9.sPAcFY9-vNgVsPna1e9oNoaUtQo27bK75K74fMwnS88";
 const planosIconUrl="https://qhbewyvljpmvwaahjzkm.supabase.co/storage/v1/object/sign/icons/planos.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lNzZmMDI3Yi0xNGJjLTRlM2QtODMyOC0xNDUyOTA4ODg2NjMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpY29ucy9wbGFub3Muc3ZnIiwiaWF0IjoxNzUwNDQ3NzkwLCJleHAiOjE3ODE5ODM3OTB9.4iW9Y2vcdvj0VYeHte_RWNmyvg-VB1Pw6QPukZmR3QY";
 const perfilIconUrl="https://qhbewyvljpmvwaahjzkm.supabase.co/storage/v1/object/sign/icons/perfil.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lNzZmMDI3Yi0xNGJjLTRlM2QtODMyOC0xNDUyOTA4ODg2NjMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpY29ucy9wZXJmaWwuc3ZnIiwiaWF0IjoxNzUwMjUzODQ1LCJleHAiOjE3ODE3ODk4NDV9.csXSvkTNAjnet6K9RAEXsrYg8BE-bIXRC2cggKM_bLo";
 document.querySelector("#dicas").innerHTML+=`<img src="${dicaIconUrl}">`
-document.querySelector("#planos").innerHTML+=`<a href="/plan_chosen.html"><img src="${planosIconUrl}"></a>`
+document.querySelector("#planos").innerHTML+=`<a href="/plans.html"><img src="${planosIconUrl}"></a>`
 document.querySelector("#perfil").innerHTML+=`<a href="/profile.html"><img src="${perfilIconUrl}"></a>`

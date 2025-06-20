@@ -9,9 +9,22 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  padding-bottom: 100px;
-  border-color: var(--pureRed);
-  border-top-width: 2px;
+  padding-top: 2px;
+  padding-bottom: 90px;
+  background-color: var(--pureRed);
+}
+
+.navBarIcons {
+  align-content: center;
+  background-color: white;
+}
+
+#addButton {
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  right: 0;
+  padding-right: 24px;
 }
 
 .logo {
@@ -36,6 +49,25 @@ body {
 h1 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+  text-align: center;
+}
+
+#title {
+  vertical-align: middle;
+}
+
+.active {
+  background-color: var(--pureRed);
+}
+
+.tip {
+  background-color: var(--lightRed);
+}
+
+.tipP {
+  padding: 4px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .btn-primary {
@@ -47,7 +79,7 @@ h1 {
   --bs-btn-active-border-color: var(--lightestRed);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .btn-primary:focus-visible {
@@ -82,6 +114,8 @@ h1 {
   align-items: center;
   text-align: center;
   width: 100%;
+  font-family: "Inter", sans-serif;
+  font-weight: normal;
 }
 
 .btn-primary.second {
@@ -122,11 +156,6 @@ h1 {
   padding-right: 24px;
 }
 
-.br-8 {
-  display: block;
-  line-height: 8px;
-}
-
 #noAcc {
   text-align: center;
   height: fit-content;
@@ -139,11 +168,6 @@ h1 {
   padding: 6px;
 }
 
-#redirectToSignUp {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
 
 .container-plans {
   background-color: var(--lightestRed);
